@@ -1,0 +1,13 @@
+############################################################
+##
+## Read up on parameters on
+## https://docs.prylabs.network/docs/prysm-usage/parameters/
+##
+############################################################
+
+datadir: /data/slacher
+
+##############
+# Connectivity
+beacon-rpc-provider: beacon-chain1:4000
+monitoring-host: 0.0.0.0

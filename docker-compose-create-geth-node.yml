@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  # Sets up the genesis configuration for the go-ethereum client from a JSON file.
+  geth-genesis:
+    image: "ethereum/client-go:latest"
+    command: --datadir=/data init /files/genesis.json
+    volumes:
+      - ./root_signer:/data
+      - ./files:/files
