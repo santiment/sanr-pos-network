@@ -30,7 +30,7 @@ services:
       - --min-sync-peers=1
       - --minimum-peers-per-subnet=0
       - --genesis-state=/files/genesis.ssz
-      - --bootstrap-node=enr:-LG4QK26GBVo37KwknBeQ8ubca9W4jHtjqeszlRJflvsJeoAXXuUK21U6Q_QTijYrAFbKExFw46mWG1Q344npc39UF-GAYpLbegxh2F0dG5ldHOIAAAAAAAAAACEZXRoMpD1pf1CAAAAAP__________gmlkgnY0gmlwhKweAAKJc2VjcDI1NmsxoQLyirWTAY--P_8vYX0N0AtINF5p37yEP6N8QI3EoCUBkYN1ZHCCdmY
+      - --bootstrap-node=enr:-LG4QOWrpyHnyKr9Ya62t0rpOgygFKPw51g7M4oDEBevvE4vcAdx8pWRl5t7cCO0ve1C6lPDnHmldMBIIbeTM8h0q1CGAYn6NgmEh2F0dG5ldHOIAAAAAAAAAACEZXRoMpD1pf1CAAAAAP__________gmlkgnY0gmlwhMO9YJ2Jc2VjcDI1NmsxoQLyirWTAY--P_8vYX0N0AtINF5p37yEP6N8QI3EoCUBkYN1ZHCCdmY
       - --chain-config-file=/files/config.yml
       - --chain-id=${CHAIN_ID:-32382}
       - --rpc-host=0.0.0.0
