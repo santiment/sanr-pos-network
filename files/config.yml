@@ -1,69 +1,38 @@
-CONFIG_NAME: sanchain-dev
+CONFIG_NAME: sanchain-pos-dev
 PRESET_BASE: interop
 
 # Genesis
 GENESIS_FORK_VERSION: 0x20000089
-
 # Altair
 ALTAIR_FORK_EPOCH: 0
 ALTAIR_FORK_VERSION: 0x20000090
-
 # Merge
 BELLATRIX_FORK_EPOCH: 0
 BELLATRIX_FORK_VERSION: 0x20000091
 TERMINAL_TOTAL_DIFFICULTY: 0
-
+# Capella
 CAPELLA_FORK_EPOCH: 2
 CAPELLA_FORK_VERSION: 0x20000092
-
-# Time parameters
-SECONDS_PER_SLOT: 5
-SLOTS_PER_EPOCH: 16
-SECONDS_PER_ETH1_BLOCK: 6
 
 # Deposit contract
 DEPOSIT_CONTRACT_ADDRESS: 0x4242424242424242424242424242424242424242
 
-# validator
-########### ETH1_FOLLOW_DISTANCE: 1024 ### need check
-# 2**4 (= 16)
-TARGET_AGGREGATORS_PER_COMMITTEE: 16
-# 2**0 (= 1)
-RANDOM_SUBNETS_PER_VALIDATOR: 1
-# 2**8 (= 256)
-EPOCHS_PER_RANDOM_SUBNET_SUBSCRIPTION: 256
-# 6 (estimate from xDai mainnet)
 
+# Time parameters
+SECONDS_PER_SLOT: 5 # SecondsPerSlot is how many seconds are in a single slot.
+SLOTS_PER_EPOCH: 16 # SlotsPerEpoch is the number of slots in an epoch.
+SECONDS_PER_ETH1_BLOCK: 6 # SecondsPerETH1Block is the approximate time for a single eth1 block to be produced.
 
-
-### time
-MIN_ATTESTATION_INCLUSION_DELAY: 1
-# 2**4 (= 16) slots 1.87 minutes
-MIN_SEED_LOOKAHEAD: 1
-# 2**2 (= 4) epochs 7.47 minutes
-MAX_SEED_LOOKAHEAD: 4
-# 2**6 (= 64) epochs ~2 hours
-EPOCHS_PER_ETH1_VOTING_PERIOD: 64
-# 2**13 (= 8,192) slots ~15.9 hours
-SLOTS_PER_HISTORICAL_ROOT: 8192
-# 2**8 (= 256) epochs ~8 hours
-MIN_VALIDATOR_WITHDRAWABILITY_DELAY: 256
-# 2**8 (= 256) epochs ~8 hours
-SHARD_COMMITTEE_PERIOD: 256
-# 2**2 (= 4) epochs 7.47 minutes
-MIN_EPOCHS_TO_INACTIVITY_PENALTY: 4
-
-
+# Deposit balance
 # 2**5 * 10**9 (= 32,000,000,000) Gwei
-MAX_EFFECTIVE_BALANCE: 2048000000000
+MAX_EFFECTIVE_BALANCE: 2048000000000 # MaxEffectiveBalance is the maximal amount of Gwei that is effective for staking.
 # 2**4 * 10**9 (= 16,000,000,000) Gwei
-EJECTION_BALANCE: 1024000000000
+EJECTION_BALANCE: 1024000000000 # EjectionBalance is the minimal GWei a validator needs to have before ejected.
 # 2**0 * 10**9 (= 1,000,000,000) Gwei
-EFFECTIVE_BALANCE_INCREMENT: 64000000000
+EFFECTIVE_BALANCE_INCREMENT: 64000000000 # EffectiveBalanceIncrement is used for converting the high balance into the low balance for validators.
 
-
-# 2**6 (= 64) epochs ~6.8 hours # EpochsPerEth1VotingPeriod defines how often the merkle root of deposit receipts get updated in beacon node on per epoch basis.
-EPOCHS_PER_ETH1_VOTING_PERIOD: 8 # minimal * 2
-
-# 2**11 (= 2,048) Eth1 blocks ~8 hours # Eth1FollowDistance is the number of eth1.0 blocks to wait before considering a new deposit for voting. This only applies after the chain as been started.
-ETH1_FOLLOW_DISTANCE: 32 # minimal * 2
+# Deposit time
+# 2**6 (= 64) epochs ~6.8 hours
+EPOCHS_PER_ETH1_VOTING_PERIOD: 32 # EpochsPerEth1VotingPeriod defines how often the merkle root of deposit receipts get updated in beacon node on per epoch basis.
+# 2**11 (= 2,048) Eth1 blocks ~8 hours
+ETH1_FOLLOW_DISTANCE: 512 # Eth1FollowDistance is the number of eth1.0 blocks to wait before considering a new deposit for voting. This only applies after the chain as been started.
