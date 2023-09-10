@@ -56,5 +56,5 @@ services:
       - ./files:/files
       - ./jwtsecret:/jwtsecret
     depends_on:
-      geth1:
+      geth:
         condition: service_started
