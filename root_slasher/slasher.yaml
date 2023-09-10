@@ -9,5 +9,5 @@ datadir: /data/slacher
 
 ##############
 # Connectivity
-beacon-rpc-provider: beacon-chain1:4000
+beacon-rpc-provider: beacon-chain:4000
 monitoring-host: 0.0.0.0

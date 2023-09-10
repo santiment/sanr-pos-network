@@ -1,7 +1,7 @@
 version: "2"
 services:
-  geth1:
-    image: "ethereum/client-go:latest"
+  geth:
+    image: "ethereum/client-go:stable"
     command:
       - --http
       - --http.api=eth,web3,txpool,net
@@ -16,14 +16,12 @@ services:
       - --networkid=${CHAIN_ID:-32382}
       - --nat=extip:$EXTERNAL_IP
     ports:
-      - 2045:8545
-    networks:
-        - sanchain-pos_network
+      - $GETH_PORT:8545
     volumes:
       - ./root_signer:/data
       - ./jwtsecret:/jwtsecret
-
-  beacon-chain1:
+      
+  beacon-chain:
 #    image: "gcr.io/prysmaticlabs/prysm/beacon-chain:stable"
     image: repo.mind-dev.com/santiops/beacon-chain
     command:
@@ -40,22 +38,19 @@ services:
       - --monitoring-host=0.0.0.0
       - --grpc-gateway-corsdomain=*
       - --contract-deployment-block=0
-      - --execution-endpoint=http://geth1:8551
+      - --execution-endpoint=http://geth:8551
       - --accept-terms-of-use
       - --jwt-secret=/jwtsecret
       - --suggested-fee-recipient=$WALLET
       - --verbosity=debug
       - --p2p-host-ip=$EXTERNAL_IP
-      - --p2p-tcp-port=13000
-      - --p2p-udp-port=13000
+      - --p2p-tcp-port=$BECONCHAIN_PORT
+      - --p2p-udp-port=$BECONCHAIN_PORT
       - --p2p-static-id
-    networks:
-        - sanchain-pos_network
     ports:
-       - 13000:13000/tcp
-       - 13000:13000/udp
-       - 172.17.0.1:3500:3500/tcp
-       - 172.17.0.1:8080:8080/tcp
+       - $BECONCHAIN_PORT:$BECONCHAIN_PORT/tcp
+       - $BECONCHAIN_PORT:$BECONCHAIN_PORT/udp
+       - 172.17.0.1:$BECONCHAIN_MONITOR_PORT:8080/tcp
     volumes:
       - ./root_beaconchain:/data
       - ./files:/files
@@ -67,25 +62,16 @@ services:
   validator:
     image: "gcr.io/prysmaticlabs/prysm/validator:stable"
     command:
-      - --beacon-rpc-provider=beacon-chain1:4000
+      - --beacon-rpc-provider=beacon-chain:4000
       - --datadir=/data
       - --accept-terms-of-use
       - --chain-config-file=/files/config.yml
       - --wallet-dir=/files/wallet
       - --wallet-password-file=/files/validator.txt
       - --enable-builder
-    networks:
-          - sanchain-pos_network
     volumes:
       - ./root_validator:/data
       - ./files:/files
     depends_on:
-      beacon-chain1:
+      beacon-chain:
         condition: service_started
-
-networks:
-    sanchain-pos_network:
-        driver: bridge
-        external: true
-        driver_opts:
-           com.docker.network.bridge.enable_ip_masquerade: 'false'
