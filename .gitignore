@@ -1,4 +1,9 @@
 files/validator_keys
 files/wallet
 files/validator.txt
+root_beaconchain/*
+root_signer/*
+root_validator/*
+root_slasher/*
+docker-compose.yml
 .env
