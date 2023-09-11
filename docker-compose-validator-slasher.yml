@@ -50,7 +50,7 @@ services:
       - --execution-endpoint=http://geth:8551
       - --accept-terms-of-use
       - --jwt-secret=/jwtsecret
-      - --suggested-fee-recipient=$WALLET
+      - --suggested-fee-recipient=$REWARD_RECIPIENT_ADDRESS
       - --verbosity=debug
       - --p2p-host-ip=$EXTERNAL_IP
       - --p2p-tcp-port=$BECONCHAIN_PORT
