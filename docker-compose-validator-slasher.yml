@@ -60,6 +60,7 @@ services:
        - $BECONCHAIN_PORT:$BECONCHAIN_PORT/tcp
        - $BECONCHAIN_PORT:$BECONCHAIN_PORT/udp
        - 172.17.0.1:$BECONCHAIN_MONITOR_PORT:8080/tcp
+       - 172.17.0.1:3500:3500/tcp
     volumes:
       - ./root_beaconchain:/data
       - ./files:/files
