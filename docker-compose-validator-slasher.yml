@@ -32,7 +32,7 @@ services:
 
   beacon-chain:
 #    image: "gcr.io/prysmaticlabs/prysm/beacon-chain:stable"
-    image: repo.mind-dev.com/santiops/beacon-chain
+    image: repo.mind-dev.com/sanchain/beacon-chain
     command:
       - --datadir=/data
       # No peers to sync with in this testnet, so setting to 0
