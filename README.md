@@ -81,7 +81,6 @@ docker compose up -d
 - [Ubuntu latest](https://ubuntu.com/server)
 - [Docker](https://docs.docker.com/engine/install/ubuntu/)
 - [Docker Compose](https://docs.docker.com/engine/install/ubuntu/)
-- Ethereum wallet (ERC-20 with full access)
 
 ## 1. Environment setup
 ### 1.1 Create a directory and Navigate to it
