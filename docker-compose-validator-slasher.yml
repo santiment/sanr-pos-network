@@ -28,7 +28,9 @@ services:
       - beacon-chain
     command: --config-file=/data/slasher.yaml  --accept-terms-of-use
     volumes:
-    - ./root_slasher:/data
+      - ./root_slasher:/data
+    ports:
+       - $SLASHER_MONITOR_PORT:8082/tcp
 
   beacon-chain:
 #    image: "gcr.io/prysmaticlabs/prysm/beacon-chain:stable"
@@ -59,7 +61,7 @@ services:
     ports:
        - $BECONCHAIN_PORT:$BECONCHAIN_PORT/tcp
        - $BECONCHAIN_PORT:$BECONCHAIN_PORT/udp
-       - 172.17.0.1:$BECONCHAIN_MONITOR_PORT:8080/tcp
+       - $BECONCHAIN_MONITOR_PORT:8080/tcp
        - 172.17.0.1:3500:3500/tcp
     volumes:
       - ./root_beaconchain:/data
@@ -79,6 +81,10 @@ services:
       - --wallet-dir=/files/wallet
       - --wallet-password-file=/files/validator.txt
       - --enable-builder
+      - --monitoring-host=0.0.0.0
+    ports:
+       - $VALIDATOR_MONITOR_PORT:8081/tcp
+
     volumes:
       - ./root_validator:/data
       - ./files:/files
