@@ -15,22 +15,14 @@ services:
       - --syncmode=full
       - --networkid=${CHAIN_ID:-32382}
       - --nat=extip:$EXTERNAL_IP
+      - --port=$GETH_P2P_PORT
+      - --bootnodes=enode://b20e87044eeb41ce50e7d7929e343dc9319d1fd917caca78b77c3355e898c4501d5a33a6c6d97b5184b8f3930f1d58b51ae2fc989174480a28e7f4abf81f791e@195.189.96.157:0?discport=30310
     ports:
       - $GETH_PORT:8545
+      - $GETH_P2P_PORT:$GETH_P2P_PORT
     volumes:
       - ./root_signer:/data
       - ./jwtsecret:/jwtsecret
-      
-  slasher:
-    image: gcr.io/prysmaticlabs/prysm/slasher:stable
-    restart: always
-    depends_on:
-      - beacon-chain
-    command: --config-file=/data/slasher.yaml  --accept-terms-of-use
-    volumes:
-      - ./root_slasher:/data
-    ports:
-       - $SLASHER_MONITOR_PORT:8082/tcp
 
   beacon-chain:
 #    image: "gcr.io/prysmaticlabs/prysm/beacon-chain:stable"
@@ -41,7 +33,7 @@ services:
       - --min-sync-peers=0
       - --minimum-peers-per-subnet=0
       - --genesis-state=/files/genesis.ssz
-      - --bootstrap-node=enr:-LG4QOWrpyHnyKr9Ya62t0rpOgygFKPw51g7M4oDEBevvE4vcAdx8pWRl5t7cCO0ve1C6lPDnHmldMBIIbeTM8h0q1CGAYn6NgmEh2F0dG5ldHOIAAAAAAAAAACEZXRoMpD1pf1CAAAAAP__________gmlkgnY0gmlwhMO9YJ2Jc2VjcDI1NmsxoQLyirWTAY--P_8vYX0N0AtINF5p37yEP6N8QI3EoCUBkYN1ZHCCdmY
+      - --bootstrap-node=enr:-LG4QPodU9nmxmCF4BufRIsJRGZKyIGd6ogbM1-NS3ULTeUZarpgTUJB-ZHYTUG8oxepynWilK-ZQC9Dq1bqsMAWTwaGAYqnxH8dh2F0dG5ldHOIAAAAAAAAAACEZXRoMpD1pf1CAAAAAP__________gmlkgnY0gmlwhMO9YJ2Jc2VjcDI1NmsxoQLyirWTAY--P_8vYX0N0AtINF5p37yEP6N8QI3EoCUBkYN1ZHCCMtI
       - --chain-config-file=/files/config.yml
       - --chain-id=${CHAIN_ID:-32382}
       - --rpc-host=0.0.0.0
@@ -53,11 +45,15 @@ services:
       - --accept-terms-of-use
       - --jwt-secret=/jwtsecret
       - --suggested-fee-recipient=$REWARD_RECIPIENT_ADDRESS
-      - --verbosity=debug
+      - --disable-peer-scorer
       - --p2p-host-ip=$EXTERNAL_IP
       - --p2p-tcp-port=$BECONCHAIN_PORT
       - --p2p-udp-port=$BECONCHAIN_PORT
       - --p2p-static-id
+      - --disable-peer-scorer
+      - --slasher
+      - --historical-slasher-node
+      - --slasher-datadir=/data
     ports:
        - $BECONCHAIN_PORT:$BECONCHAIN_PORT/tcp
        - $BECONCHAIN_PORT:$BECONCHAIN_PORT/udp
@@ -84,7 +80,6 @@ services:
       - --monitoring-host=0.0.0.0
     ports:
        - $VALIDATOR_MONITOR_PORT:8081/tcp
-
     volumes:
       - ./root_validator:/data
       - ./files:/files
