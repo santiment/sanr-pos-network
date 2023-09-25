@@ -16,7 +16,7 @@ services:
       - --networkid=${CHAIN_ID:-32382}
       - --nat=extip:$EXTERNAL_IP
       - --port=$GETH_P2P_PORT
-      - --bootnodes=enode://b20e87044eeb41ce50e7d7929e343dc9319d1fd917caca78b77c3355e898c4501d5a33a6c6d97b5184b8f3930f1d58b51ae2fc989174480a28e7f4abf81f791e@195.189.96.157:0?discport=30310
+      - --bootnodes=enode://b20e87044eeb41ce50e7d7929e343dc9319d1fd917caca78b77c3355e898c4501d5a33a6c6d97b5184b8f3930f1d58b51ae2fc989174480a28e7f4abf81f791e@84.32.188.95:0?discport=30310
     ports:
       - $GETH_PORT:8545
       - $GETH_P2P_PORT:$GETH_P2P_PORT
@@ -33,7 +33,7 @@ services:
       - --min-sync-peers=0
       - --minimum-peers-per-subnet=0
       - --genesis-state=/files/genesis.ssz
-      - --bootstrap-node=enr:-LG4QPodU9nmxmCF4BufRIsJRGZKyIGd6ogbM1-NS3ULTeUZarpgTUJB-ZHYTUG8oxepynWilK-ZQC9Dq1bqsMAWTwaGAYqnxH8dh2F0dG5ldHOIAAAAAAAAAACEZXRoMpD1pf1CAAAAAP__________gmlkgnY0gmlwhMO9YJ2Jc2VjcDI1NmsxoQLyirWTAY--P_8vYX0N0AtINF5p37yEP6N8QI3EoCUBkYN1ZHCCMtI
+      - --bootstrap-node=enr:-LG4QJtpFpHQ2ujKfDq7PUW_UdsBGFVWS_reQPHA4TxgFsbEDogWrniH_37tq6FJirddJNS8bkyw50j33_R-OVV_CaqGAYrKbU6Oh2F0dG5ldHOIAAAAAAAAAACEZXRoMpD1pf1CAAAAAP__________gmlkgnY0gmlwhFQgvF-Jc2VjcDI1NmsxoQLyirWTAY--P_8vYX0N0AtINF5p37yEP6N8QI3EoCUBkYN1ZHCCMtI 
       - --chain-config-file=/files/config.yml
       - --chain-id=${CHAIN_ID:-32382}
       - --rpc-host=0.0.0.0
