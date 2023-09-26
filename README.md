@@ -17,7 +17,7 @@ cd /opt/sanchain/signer
 
 ### 1.2 Clone the Project
 ```shell
-git clone git@gitlab.mind-dev.com:santiopts/pos/pos_network_signer.git .
+git clone git@gitlab.mind-dev.com:pb/pos_network_signer.git .
 ```
 
 ### 1.3 Configuration and settings edit
@@ -92,7 +92,7 @@ cd /opt/sanchain/readonly
 ```
 ### 1.2 Clone the Project
 ```shell
-git clone git@gitlab.mind-dev.com:santiopts/pos/pos_network_signer.git .
+git clone git@gitlab.mind-dev.com:pb/pos_network_signer.git .
 ```
 ### 1.3 Configuration and settings edit
 ```shell
