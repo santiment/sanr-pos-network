@@ -6,8 +6,6 @@
 - HDD 300 GB SSD
 - Public IP
 - OS [Ubuntu latest](https://ubuntu.com/server)
-
-## Minimum requirements
 - [Docker](https://docs.docker.com/engine/install/ubuntu/)
 - [Docker Compose](https://docs.docker.com/engine/install/ubuntu/)
 
