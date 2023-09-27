@@ -34,7 +34,7 @@ ln -s docker-compose-readonly.yml docker-compose.yml
 ### 1.5 Launch the Project
 ```shell
 docker compose up -d
-
+```
 # Running SANR Network node in signer mode
 
 ## Minimum requirements
