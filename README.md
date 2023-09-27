@@ -81,7 +81,7 @@ Follow these steps:
 - Enter the mnemonic again
   After successful execution, a `files/validator_keys` directory will be created.
 
-## 3. Send `files/validator_keys/deposit_data-*.json` to [info@sanr.network](mailto:info@sanr.network)
+## 3. Submit `files/validator_keys/deposit_data-*.json` via [nodes.sanr.network](https://nodes.sanr.network) form
 
 ## 4. Validator wallet creation
 ### 4.1 Create a password for the validator wallet
