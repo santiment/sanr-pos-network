@@ -1,10 +1,16 @@
 # Running SANR Network node in readonly mode
  
 ## Minimum technical requirements
-- CPU 4-16 CORE
-- MEMORY 16-32GB
+- CPU 8 CORE
+- MEMORY 16 GB
 - HDD 300 GB SSD
-- Public IP
+- Static IP
+## Recommended technical requirements 
+- CPU 16 CORE
+- MEMORY 32 GB
+- HDD 300 GB SSD
+- Static IP
+## Software
 - OS [Ubuntu latest](https://ubuntu.com/server)
 - [Docker](https://docs.docker.com/engine/install/ubuntu/)
 - [Docker Compose](https://docs.docker.com/engine/install/ubuntu/)
