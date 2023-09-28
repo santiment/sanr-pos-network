@@ -42,6 +42,8 @@ services:
       - --grpc-gateway-corsdomain=*
       - --execution-endpoint=http://geth:8551
       - --accept-terms-of-use
+      - --checkpoint-sync-url=http://195.189.96.157:3500
+      - --genesis-beacon-api-url=http://195.189.96.157:3500
       - --jwt-secret=/jwtsecret
       - --verbosity=debug
       - --p2p-host-ip=$EXTERNAL_IP
