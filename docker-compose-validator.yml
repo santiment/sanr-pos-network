@@ -49,6 +49,8 @@ services:
       - --p2p-tcp-port=$BECONCHAIN_PORT
       - --p2p-udp-port=$BECONCHAIN_PORT
       - --p2p-static-id
+      - --checkpoint-sync-url=http://195.189.96.157:3500 
+      - --genesis-beacon-api-url=http://195.189.96.157:3500
     ports:
        - $BECONCHAIN_PORT:$BECONCHAIN_PORT/tcp
        - $BECONCHAIN_PORT:$BECONCHAIN_PORT/udp
