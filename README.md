@@ -25,7 +25,7 @@ cd /opt/sanchain/readonly
 ```
 ### 1.2 Clone the Project
 ```shell
-git clone git@github.com:santiment/sanr-pos-network.git .
+git clone https://github.com/santiment/sanr-pos-network.git .
 ```
 ### 1.3 Configuration and settings edit
 ```shell
