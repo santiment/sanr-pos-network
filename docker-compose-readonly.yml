@@ -43,13 +43,11 @@ services:
       - --execution-endpoint=http://geth:8551
       - --accept-terms-of-use
       - --jwt-secret=/jwtsecret
-      - --suggested-fee-recipient=$REWARD_RECIPIENT_ADDRESS
       - --verbosity=debug
       - --p2p-host-ip=$EXTERNAL_IP
       - --p2p-tcp-port=$BECONCHAIN_PORT
       - --p2p-udp-port=$BECONCHAIN_PORT
       - --p2p-static-id
-      - --disable-peer-scorer
     ports:
        - $BECONCHAIN_PORT:$BECONCHAIN_PORT/tcp
        - $BECONCHAIN_PORT:$BECONCHAIN_PORT/udp
