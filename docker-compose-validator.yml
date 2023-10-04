@@ -16,24 +16,25 @@ services:
       - --networkid=${CHAIN_ID:-32382}
       - --nat=extip:$EXTERNAL_IP
       - --port=$GETH_P2P_PORT
-      - --bootnodes=enode://b20e87044eeb41ce50e7d7929e343dc9319d1fd917caca78b77c3355e898c4501d5a33a6c6d97b5184b8f3930f1d58b51ae2fc989174480a28e7f4abf81f791e@84.32.188.95:0?discport=30310
+      - --bootnodes=enode://b20e87044eeb41ce50e7d7929e343dc9319d1fd917caca78b77c3355e898c4501d5a33a6c6d97b5184b8f3930f1d58b51ae2fc989174480a28e7f4abf81f791e@84.32.188.95:0?discport=30311
+      - --log.file=/logs/geth.log
     ports:
       - $GETH_PORT:8545
       - $GETH_P2P_PORT:$GETH_P2P_PORT
     volumes:
       - ./root_signer:/data
       - ./jwtsecret:/jwtsecret
-      
+      - ./logs:/logs
   beacon-chain:
 #    image: "gcr.io/prysmaticlabs/prysm/beacon-chain:stable"
     image: repo.mind-dev.com/sanchain/beacon-chain
     command:
       - --datadir=/data
       # No peers to sync with in this testnet, so setting to 0
-      - --min-sync-peers=1
-      - --minimum-peers-per-subnet=0
+      - --min-sync-peers=2
+      - --minimum-peers-per-subnet=2
       - --genesis-state=/files/genesis.ssz
-      - --bootstrap-node=enr:-LG4QJtpFpHQ2ujKfDq7PUW_UdsBGFVWS_reQPHA4TxgFsbEDogWrniH_37tq6FJirddJNS8bkyw50j33_R-OVV_CaqGAYrKbU6Oh2F0dG5ldHOIAAAAAAAAAACEZXRoMpD1pf1CAAAAAP__________gmlkgnY0gmlwhFQgvF-Jc2VjcDI1NmsxoQLyirWTAY--P_8vYX0N0AtINF5p37yEP6N8QI3EoCUBkYN1ZHCCMtI
+      - --bootstrap-node=enr:-LG4QEYMHdKRCdNRN1Xx_9mFVuDgFaceLcdNhdq-Af6wQJ1rbjgJYK4de5xH25Q1WenzcEwNME9rixEvKkmIsWxX2-SGAYr1Ikloh2F0dG5ldHOIAAAAAAAAAACEZXRoMpD1pf1CAAAAAP__________gmlkgnY0gmlwhFQgvF-Jc2VjcDI1NmsxoQLyirWTAY--P_8vYX0N0AtINF5p37yEP6N8QI3EoCUBkYN1ZHCCMtM
       - --chain-config-file=/files/config.yml
       - --chain-id=${CHAIN_ID:-32382}
       - --rpc-host=0.0.0.0
@@ -51,6 +52,7 @@ services:
       - --p2p-static-id
       - --checkpoint-sync-url=http://195.189.96.157:3500 
       - --genesis-beacon-api-url=http://195.189.96.157:3500
+      - --log-file=/logs/beacon.log
     ports:
        - $BECONCHAIN_PORT:$BECONCHAIN_PORT/tcp
        - $BECONCHAIN_PORT:$BECONCHAIN_PORT/udp
@@ -74,11 +76,22 @@ services:
       - --wallet-password-file=/files/validator.txt
       - --enable-builder
       - --monitoring-host=0.0.0.0
+      - --log-file=/logs/validator.log
     volumes:
       - ./root_validator:/data
       - ./files:/files
+      - ./logs:/logs
     ports:
        - $VALIDATOR_MONITOR_PORT:8081/tcp
     depends_on:
       beacon-chain:
         condition: service_started
+  logrotate:
+    image: blacklabelops/logrotate
+    volumes:
+      - "./logs:/var/log/logs"
+    environment:
+      - LOGS_DIRECTORIES=/var/log/logs
+      - LOGROTATE_INTERVAL=daily
+      - LOG_FILE_ENDINGS=log
+      - LOGROTATE_COPIES=30        
