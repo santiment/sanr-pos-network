@@ -26,8 +26,7 @@ services:
       - ./jwtsecret:/jwtsecret
       - ./logs:/logs
   beacon-chain:
-#    image: "gcr.io/prysmaticlabs/prysm/beacon-chain:stable"
-    image: repo.mind-dev.com/sanchain/beacon-chain
+    image: "gcr.io/prysmaticlabs/prysm/beacon-chain:stable"
     command:
       - --datadir=/data
       # No peers to sync with in this testnet, so setting to 0
