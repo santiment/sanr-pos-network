@@ -38,6 +38,7 @@ nano .env
 
 ### 1.4 Configure the Node Type
 ```shell
+./scripts/gen_home_dir_geth.sh
 ln -s docker-compose-readonly.yml docker-compose.yml
 ```
 
