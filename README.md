@@ -1,3 +1,73 @@
+# Running SANR Network node in signer mode
+## Minimum requirements
+ Running SANR Network node in readonly mode
+
+## 1. Go to project
+```shell
+cd /opt/sanchain/readonly
+```
+### 1.2 Update latest changes
+```shell
+git pull
+```
+### 1.3 Stop node
+```schell
+./scripts/stop_clear.sh
+```
+### 1.4 Update configuration and settings edit
+```shell
+nano .env
+```
+ `EXTERNAL_IP`=Server external address
+ `NUM_VALIDATORS`=Number of validators.**(Setup 10)**
+ `REWARD_RECIPIENT_ADDRESS`=Reward recipient address **(you should have access to this account)**
+
+## 2. Run `./scripts/create_mnemonic.sh`
+Follow these steps:
+ Choose language: `English`
+ Specify the number of validators: `10`
+ Enter account address from .env (REWARD_RECIPIENT_ADDRESS) **(you should have access to this account)**
+ Confirm account address
+ Choose language: `English`
+ Enter a password for the validator keystore **(record and store in a secure place)**
+ Confirm the password
+ The generated mnemonic will be displayed **(record and store in a secure place)**
+ Enter the mnemonic again
+  After successful execution, a `files/validator_keys` directory will be created.
+
+## 3. Attach `files/validator_keys/deposit_data.json` to  [dashboard](https://nodes.sanr.network)
+## 4. Validator wallet creation
+### 4.1 Create a password for the validator wallet
+```shell
+echo "someStrongPassword" > files/validator.txt
+```
+**(replace someStrongPassword to password which you want to use)**
+
+### 4.2 Execute the script `./scripts/create_validator_wallet.sh`
+ Wallet password: Enter the password created in **Step 4.1**
+ Enter the password for your imported accounts: Enter the password for the validator keystore from **Step 2**
+  After successful execution, a `files/wallet` folder will be created.
+  
+## 5. Startup
+### 5.1 Create Geth home directory
+```shell
+./scripts/gen_home_dir_geth.sh
+```
+
+### 5.2 Configure the Node Type
+```shell
+rm -rf docker-compose.yml
+
+ln -s docker-compose-validator.yml docker-compose.yml
+```
+
+### 5.3 Launch the Project
+```shell
+docker compose up -d
+```
+
+
+
 # Running SANR Network node in readonly mode
  
 ## Minimum technical requirements
