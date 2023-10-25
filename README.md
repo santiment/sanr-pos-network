@@ -28,7 +28,7 @@ nano .env
 ## 2. Run `./scripts/create_mnemonic.sh`
 Follow these steps:
  Choose language: `English`
- Specify the number of validators: `Same amount NUM_VALIDATORS`
+ Specify the number of validators: `1`
  Enter account address from .env (REWARD_RECIPIENT_ADDRESS) **(you should have access to this account)**
  Confirm account address
  Choose language: `English`
