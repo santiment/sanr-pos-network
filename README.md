@@ -1,3 +1,6 @@
+# *ETH Mainnet staking address: ```0xbFE5D25956F6D7CF212a24B628c7871A34c4465f```*
+## 2000 SANs per validator (20 000 SANs max cup for stake)
+
 # Running SANR Network node in signer mode
 ## Minimum requirements
  Running SANR Network node in readonly mode
