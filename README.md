@@ -22,13 +22,13 @@ git pull
 nano .env
 ```
  `EXTERNAL_IP`=Server external address
- `NUM_VALIDATORS`=Number of validators.**(put here validators amount what you want to run - maximum 10 validators per node)**
+ `NUM_VALIDATORS`=`1` **(put here validators amount what you want to run - maximum 10 validators per node)**
  `REWARD_RECIPIENT_ADDRESS`=Reward recipient address **(you should have access to this account)**
 
 ## 2. Run `./scripts/create_mnemonic.sh`
 Follow these steps:
  Choose language: `English`
- Specify the number of validators: `1`
+ Specify the number of validators: `1` **(put here validators amount from step 1.4)**
  Enter account address from .env (REWARD_RECIPIENT_ADDRESS) **(you should have access to this account)**
  Confirm account address
  Choose language: `English`
