@@ -60,6 +60,7 @@ services:
       - ./root_beaconchain:/data
       - ./files:/files
       - ./jwtsecret:/jwtsecret
+      - ./logs:/logs
     depends_on:
       geth:
         condition: service_started
