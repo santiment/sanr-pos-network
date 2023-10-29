@@ -97,12 +97,12 @@ The formula for calculation is `your amount of validators` * `2000 SAN`
 - CPU 8 CORE
 - MEMORY 16 GB
 - HDD 300 GB SSD
-- Static IP
+- Static IP 8 MBit/sec broadband
 ## Recommended technical requirements 
 - CPU 16 CORE
 - MEMORY 32 GB
 - HDD 300 GB SSD
-- Static IP
+- Static IP 10 MBit/sec broadband
 ## Software
 - OS [Ubuntu latest](https://ubuntu.com/server)
 - [Docker](https://docs.docker.com/engine/install/ubuntu/)
