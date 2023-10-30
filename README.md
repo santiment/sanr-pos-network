@@ -81,7 +81,7 @@ ln -s docker-compose-validator.yml docker-compose.yml
 docker compose up -d
 ```
 
-## 5. Calculate and stake required SANs amount on ETH Mainnet staking address: ```0xbFE5D25956F6D7CF212a24B628c7871A34c4465f```
+## 5. Calculate and send required SANs amount to ETH Mainnet staking address: ```0xbFE5D25956F6D7CF212a24B628c7871A34c4465f```
 
 The formula for calculation is `your amount of validators` * `2000 SAN`
 
@@ -96,12 +96,12 @@ The formula for calculation is `your amount of validators` * `2000 SAN`
 ## Minimum technical requirements
 - CPU 8 CORE
 - MEMORY 16 GB
-- HDD 300 GB SSD
+- SSD(NVME) 300 GB
 - Static IP 8 MBit/sec broadband
 ## Recommended technical requirements 
 - CPU 16 CORE
 - MEMORY 32 GB
-- HDD 300 GB SSD
+- SSD(NVME) 300 GB
 - Static IP 10 MBit/sec broadband
 ## Software
 - OS [Ubuntu latest](https://ubuntu.com/server)
