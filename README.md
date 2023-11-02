@@ -140,13 +140,10 @@ ln -s docker-compose-readonly.yml docker-compose.yml
 docker compose up -d
 ```
 
-
 # Troubleshooting
 ### 1. Check if all processes are running correctly.
 ```shell
 cd /opt/sanchain/readonly
-```
-```shell
 docker compose ps
 ```
 
@@ -159,11 +156,33 @@ The command's result should have the following statuses:
 ```shell
 docker compose logs --tail 1000 -f beacon-chain
 ```
-This command will display the last 1000 lines of the beacon-chain container's log. You should see messages like this:
+This command will display the last 1000 lines of the beacon-chain container log. You should see messages like this:
 ```
-level=debug msg="Received block" blockSlot=344382 graffiti="" prefix=sync proposerIndex=55 sinceSlotStartTime=76.010571ms validationTime=4.057363ms
+level=debug msg="Received block" blockSlot=34@4382 graffiti="" prefix=sync proposerIndex=55 sinceSlotStartTime=76.010571ms validationTime=4.057363ms
 ```
-This indicates that the node is syncing and working.
+This indicates that the node is working.
+```
+level=info msg="Processing block batch of size 60 starting from  0x9389e285... 449921/486903 - estimated time remaining 16m58s"
+```
+This indicates that the node is syncing. Need wait and check again.
+### 3. In the validator logs(Signer mode):
+```shell
+cd /opt/sanchain/readonly
+docker compose logs --tail 1000 -f beacon-chain
+```
+This command will display the last 1000 lines of the validator container log. You should see messages like this:
+```
+level=info msg="Submitted new sync message" blockRoot=0xeae8befa51dd prefix=validator slot=501236 slotStartTime=2023-11-01 11:05:04 +0000 UTC timeSinceSlotStart=1.681908152s validatorIndex=71
+```
+This indicates that the validator work current.
+## Full restart node
+```shell
+cd /opt/sanchain/readonly
+./scripts/stop_clear.sh
+./scripts/gen_home_dir_geth.sh
+docker compose up -d
+```
+##### Important. Follow the commands step by step. There should be no errors during execution
 
 ## Monitoring
 
@@ -171,9 +190,10 @@ We collect statistics on active nodes (determining network lag, node configurati
 ### Make sure that your server and node has:
 1. The ICMP protocol is open.
 2. The following ports are open:
-   - 13002/tcp, udp - p2p
-   - 9102/tcp - stats beacon-chain
-   - 33003/udp - geth
+    - 13002/tcp, udp - p2p
+    - 9102/tcp - stats beacon-chain
+    - 33003/udp - geth
+##### Important. Check the firewall settings on both the server and the datacenter(management panel).  
 
 ### You can use the following tools for monitoring:
 1. ICMP checker: [https://www.meter.net/tools/world-ping-test/](https://www.meter.net/tools/world-ping-test/)
