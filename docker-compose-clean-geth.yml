@@ -1,0 +1,12 @@
+version: "2"
+services:
+  geth_prune:
+    image: "ethereum/client-go:stable"
+    command:
+      - --datadir=/data
+      - --log.file=/logs/geth.log
+      - snapshot 
+      - prune-state
+    volumes:
+      - ./root_signer:/data
+      - ./logs:/logs
