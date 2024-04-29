@@ -1,7 +1,7 @@
 version: "2"
 services:
   geth:
-    image: "ethereum/client-go:stable"
+    image: "ethereum/client-go:v1.13.1"
     command:
       - --http
       - --http.api=eth,web3,txpool,net
