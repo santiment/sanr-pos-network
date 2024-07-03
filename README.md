@@ -134,8 +134,11 @@ nano .env
 ./scripts/gen_home_dir_geth.sh
 ln -s docker-compose-readonly.yml docker-compose.yml
 ```
-
-### 1.5 Launch the Project
+### 1.5 Create Geth home directory
+```shell
+./scripts/gen_home_dir_geth.sh
+```
+### 1.6 Launch the Project
 ```shell
 docker compose up -d
 ```
