@@ -7,3 +7,4 @@ root_validator/*
 root_slasher/*
 docker-compose.yml
 .env
+logs/*
