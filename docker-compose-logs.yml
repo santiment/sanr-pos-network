@@ -1,0 +1,12 @@
+MacBook-Pro-Ildar:sanr-pos-network inurmuhametov$ cat docker-compose-validator.yml 
+version: "3.7"
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/certs:/etc/nginx/certs
+      - ./logs:/logs
+    restart: always
