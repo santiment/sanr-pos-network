@@ -1,4 +1,3 @@
-MacBook-Pro-Ildar:sanr-pos-network inurmuhametov$ cat docker-compose-validator.yml 
 version: "3.7"
 services:
   nginx:
