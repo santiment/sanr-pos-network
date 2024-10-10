@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker compose -f docker-compose-create-geth-node.yml up -d
+docker compose -f docker-compose-create-geth-node.yml up 
