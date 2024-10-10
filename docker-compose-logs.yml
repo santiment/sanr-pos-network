@@ -4,9 +4,10 @@ services:
   nginx:
     image: nginx:latest
     ports:
-      - "8080:8080"
+      - "8443:8080"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/.htpasswd:/etc/nginx/.htpasswd
       - ./nginx/certs:/etc/nginx/certs
       - ./logs:/logs
     restart: always
