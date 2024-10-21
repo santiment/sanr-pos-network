@@ -94,14 +94,14 @@ The formula for calculation is `your amount of validators` * `2000 SAN`
 # Running SANR Network node in readonly mode
  
 ## Minimum technical requirements
-- CPU 8 CORE
+- CPU 8 CORE Intel Core i5–760 or AMD FX-8100 or better
 - MEMORY 16 GB
-- SSD(NVME) 300 GB
+- SSD(NVME) 1 TB
 - Static IP 8 MBit/sec broadband
 ## Recommended technical requirements 
-- CPU 16 CORE
+- CPU 16 CORE Intel Core i7–4770 or AMD FX-8310 or better
 - MEMORY 32 GB
-- SSD(NVME) 300 GB
+- SSD(NVME) 2 TB
 - Static IP 10 MBit/sec broadband
 ## Software
 - OS [Ubuntu latest](https://ubuntu.com/server)
