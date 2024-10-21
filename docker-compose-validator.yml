@@ -39,7 +39,7 @@ services:
       - --min-sync-peers=2
       - --minimum-peers-per-subnet=2
       - --genesis-state=/files/genesis.ssz
-      - --bootstrap-node=enr:-LG4QNQbzpVjGdqC-Elk9JUABL5P-UGOBGaXDgAeRW6SevulahyjcC8uNyLYBs1FiqRc8JEHoijqUBBtVPoQ8-F5J4iGAZJMwgVNh2F0dG5ldHOIAAAAAAAAAACEZXRoMpD1pf1CAAAAAP__________gmlkgnY0gmlwhFQgvF-Jc2VjcDI1NmsxoQLyirWTAY--P_8vYX0N0AtINF5p37yEP6N8QI3EoCUBkYN1ZHCCMtQ
+      - --bootstrap-node=enr:-LG4QNQbzpVjGdqC-Elk9JUABL5P-UGOBGaXDgAeRW6SevulahyjcC8uNyLYBs1FiqRc8JEHoijqUBBtVPoQ8-F5J4iGAZJMwgVNh2F0dG5ldHOIAAAAAAAAAACEZXRoMpD1pf1CAAAAAP__________gmlkgnY0gmlwhFQgvF-Jc2VjcDI1NmsxoQLyirWTAY--P_8vYX0N0AtINF5p37yEP6N8QI3EoCUBkYN1ZHCCMtQ,enr:-LG4QGpEySaf6ftrgKx_SVM4-BeR_P01YW1QE2Qetr3Mo-1qDqeFcioac6neMHmxRPq4Vd3UNenJSTr1Fs51aPKhqpOGAZKubWjyh2F0dG5ldHOIAAAAAAAAAACEZXRoMpD1pf1CAAAAAP__________gmlkgnY0gmlwhLzWgb6Jc2VjcDI1NmsxoQLyirWTAY--P_8vYX0N0AtINF5p37yEP6N8QI3EoCUBkYN1ZHCCMtQ
       - --chain-config-file=/files/config.yml
       - --chain-id=${CHAIN_ID:-32382}
       - --rpc-host=0.0.0.0
